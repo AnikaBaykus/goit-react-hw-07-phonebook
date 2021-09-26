@@ -28,34 +28,3 @@ const store = configureStore({
 });
 
 export { store };
-
-// код, отвечающий за хранение и чтение контактов
-
-// import storage from 'redux-persist/lib/storage';
-// import {
-//     persistStore,
-//     persistReducer,
-//   } from 'redux-persist';
-
-// const persistConfig = {
-//   key: 'subscribers',
-//   storage,
-// };
-
-// const contactPersistConfig = {
-//   key: 'subscriber',
-//   storage,
-//   blacklist: ['filter'],
-// };
-
-// const store = configureStore({
-//   reducer: {
-//     contacts: persistReducer(persistConfig, phoneBookReducer),
-//   },
-//   middleware,
-//   devTools: process.env.NODE_ENV === 'development', // Отключить девтулзы для общего пользования
-// });
-
-// const persistor = persistStore(store);
-
-// export { store, persistor };
