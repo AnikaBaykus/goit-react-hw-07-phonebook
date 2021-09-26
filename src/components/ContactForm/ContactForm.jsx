@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import s from './ContactForm.module.css';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/phonebook/phonebook-actions.js';
 
@@ -41,7 +39,6 @@ export default function ContactForm() {
     } else {
       dispatch(addContact(name, number));
     }
-    // options.onSubmit(name, number);
     resetForm();
   };
 
@@ -85,13 +82,3 @@ export default function ContactForm() {
     </form>
   );
 }
-
-// ContactForm.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (name, number) => dispatch(addContact(name, number)),
-// });
-
-// export default connect(null, mapDispatchToProps)(ContactForm);

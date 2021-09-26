@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
-// import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/phonebook/phonebook-actions.js';
 
@@ -46,20 +45,4 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     }),
   ),
-  // onDeleteContact: PropTypes.func.isRequired,
 };
-
-// const mapStateToProps = state => {
-//   const { filter, items } = state.contacts;
-//   const visibleContact = getVisibleContacts(items, filter);
-
-//   return {
-//     contacts: visibleContact,
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   onDeleteContact: id => dispatch(deleteContact(id)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
