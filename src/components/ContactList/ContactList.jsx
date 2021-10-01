@@ -1,21 +1,16 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/phonebook/phonebook-actions.js';
-
-const getVisibleContacts = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return allContacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter),
-  );
-};
+import { useEffect } from 'react';
+import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 
 export default function ContactList() {
-  const contacts = useSelector(state =>
-    getVisibleContacts(state.contacts.items, state.contacts.filter),
-  );
   const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
+
+  useEffect(() => {
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
 
   return (
     <ul className={s.ul}>
@@ -23,10 +18,10 @@ export default function ContactList() {
         <li className={s.li} key={id}>
           <p className={s.p}>
             {name}: {number}
-          </p>{' '}
+          </p>
           <button
             className={s.button}
-            onClick={() => dispatch(deleteContact(id))}
+            onClick={() => dispatch(contactsOperations.deleteContacts(id))}
             type="button"
           >
             Delete

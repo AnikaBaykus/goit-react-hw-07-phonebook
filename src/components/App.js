@@ -5,11 +5,16 @@ import Filter from './Filter';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Notification from './Notification';
-import { useSelector } from 'react-redux';
-//
+import { useSelector, useDispatch } from 'react-redux';
+import { contactsOperations, contactsSelectors } from 'redux/phonebook';
+import { useEffect } from 'react';
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts.items);
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => contactsSelectors.getContacts(state));
+  useEffect(() => {
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
   return (
     <Container>
       <Section title="Phonebook">

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import s from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/phonebook/phonebook-actions.js';
+import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -11,7 +11,7 @@ export default function ContactForm() {
   const formNameId = uuidv4();
   const formNumberId = uuidv4();
 
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(state => contactsSelectors.getContacts(state));
   const dispatch = useDispatch();
 
   const handleChangeName = event => {
@@ -37,7 +37,7 @@ export default function ContactForm() {
     if (findCopyContact) {
       alert(`${name} is already in contacts.`);
     } else {
-      dispatch(addContact(name, number));
+      dispatch(contactsOperations.addContacts(name, number));
     }
     resetForm();
   };
