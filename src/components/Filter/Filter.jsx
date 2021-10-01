@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import s from './Filter.module.css';
-import { filterChange } from '../../redux/phonebook/phonebook-actions.js';
+import { contactsActions } from 'redux/phonebook';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function Filter() {
@@ -8,7 +8,7 @@ export default function Filter() {
   const value = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
-  const onChange = e => dispatch(filterChange(e.target.value));
+  const onChange = e => dispatch(contactsActions.filterChange(e.target.value));
 
   return (
     <div>
